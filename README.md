@@ -6,7 +6,7 @@ This repository exists on the Fermilab DES cluster. Start by ssh-ing to the DES 
 The following commands will get you to the right place and set up your environment:
 
 - `cd /data/des41.a/data/desgw_public/TreasureMap`
-- `./setup_tm.sh`
+- `source setup_tm.sh`
 
 ### Getting a TreasureMap API token (optional, but takes 1 minute)
 You'll need this to tag the pointings to your name.
