@@ -67,8 +67,8 @@ logging.debug("[" + USERNAME + "] " + "--test set to {}".format(options.test))
 
 # Copy the infile to the log directory
 logging.info("[" + USERNAME + "] " + "Copying infile to log directory")
-rc = os.system("cp {} ".format(options.infile) + log_dir)
-if rc == 0:
+copy_rc = os.system("cp {} ".format(options.infile) + log_dir)
+if copy_rc == 0:
     logging.debug("[" + USERNAME + "] " + "Copy was successful")
 else:
     logging.warning("[" + USERNAME + "] " + "Copy FAILED")
@@ -207,6 +207,11 @@ if not options.test:
 else:
     logging.info("[" + USERNAME + "] " + "Skipping submission process due to --test argument")
 
+# Clean up directory
+if copy_rc == 0:
+    os.system('rm {}'.format(options.infile))
+    logging.info("[" + USERNAME + "] " + "removed pointings file, since it was copied to log dir")
+    
 # Conclude the program
 logging.info("[" + USERNAME + "] " + "Progam finished")
 logging.shutdown()
