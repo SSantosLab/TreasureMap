@@ -20,7 +20,7 @@ from treasuremap import Pointings
 USERNAME = getpass.getuser()
 
 # Get the time for stamping the log files
-time = datetime.dateime.now()
+time = datetime.datetime.now()
 
 # Set up logging
 log_dir = "logs/{}/".format(time.strftime("%y-%m-%d_%H-%M-%S"))
