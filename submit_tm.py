@@ -10,7 +10,7 @@ import logging
 from optparse import OptionParser
 import os
 import sys
-sys.path.append('treasuremap')
+sys.path.append('TreasureMapPy/treasuremap')
 
 from astropy.coordinates import SkyCoord
 import pandas as pd
