@@ -9,3 +9,6 @@ TreasureMapPy/
 
 # API tokens
 api_tokens/
+
+#SISPI DB password
+*.password
