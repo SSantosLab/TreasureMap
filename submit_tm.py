@@ -136,6 +136,9 @@ logging.info("[" + USERNAME + "] " + "Finished making pointings")
 logging.info("[" + USERNAME + "] " + "Starting generation of json data")
 for pointing in pointings.values():
     pointing.build_json()
+    # Add in DOI info
+    pointing["doi_group_id"] = "DECam"
+    pointing["request_doi"] = True
 logging.info("[" + USERNAME + "] " + "Finished building json data")
 
 # If the preview argument was used, wait for approval before submitting
