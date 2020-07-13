@@ -22,12 +22,12 @@ def get_creators():
     """
     Load in a dictionary of authors and affiliations.
     
-    :return: creators: a dictionary of authors and affiliations
+    :return: creators: a list of author and affiliation dictionaries
     """
     with open("authors.yaml", 'r') as creator_file:
         creators = yaml.safe_load(creator_file)
     
-    return creators
+    return [{"name": k, "affiliation": v} for k, v in creators['AUTHORS'].items()]
 
 # Get username of user
 USERNAME = getpass.getuser()
