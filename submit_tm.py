@@ -216,7 +216,7 @@ if not options.test:
     logging.debug("[" + USERNAME + "] " + "pointing file set to {}".format(pointing_filename))
 
     for flt in pointings.keys():
-        pointing_file.write(json.dumps(pointings[flt], indent=4))
+        pointing_file.write(json.dumps(pointings[flt].pointings, indent=4))
         pointing_file.write('\n\n')
 
         logging.info("[" + USERNAME + "] " + "Wrote pointings for {} band".format(flt))
