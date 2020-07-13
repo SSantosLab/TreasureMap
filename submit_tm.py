@@ -195,7 +195,7 @@ if not options.test:
     json_data = {"api_token": API_TOKEN, "graceid": options.graceid, "creators": creators}
     r = requests.post(url="http://treasuremap.space/api/v0/request_doi", json=json_data)
     logging.info("[" + USERNAME + "] " + "DOI response saved to doi.json")
-    response_file = open("doi.json", 'w+')
+    response_file = open(log_dir + "doi.json", 'w+')
     response_file.write(json.dumps(r.text, indent=4))
 
     # Save pointings
