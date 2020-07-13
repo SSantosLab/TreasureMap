@@ -26,8 +26,19 @@ def get_creators():
     """
     with open("authors.yaml", 'r') as creator_file:
         creators = yaml.safe_load(creator_file)
+        
+    # Put submitter's name first in the list
+    try:
+        name = glob.glob('api_tokens/' + USERNAME + '/*.name')[0].split('/')[-1].split('.name')[0].replace('_', ' ')
+    except IndexError:
+        name = "Mandeep Gill"
+    authors = [{"name": k, "affiliation": v} for k, v in creators['AUTHORS'].items()]
+    name_idx = authors.index({"name": name, "affiliation": creators["AUTHORS"][name]})
+    value = authors.pop(name_idx)
     
-    return [{"name": k, "affiliation": v} for k, v in creators['AUTHORS'].items()]
+    return [value] + c
+    
+    
 
 # Get username of user
 USERNAME = getpass.getuser()
