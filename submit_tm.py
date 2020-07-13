@@ -165,12 +165,12 @@ if options.preview:
 if not options.test:
     # Submit jsons
     logging.info("[" + USERNAME + "] " + "Beginning submission process")
-    requests = {}
+    requests_dict = {}
     for flt in pointings.keys():
         try:
             request = pointings[flt].submit()
             logging.info("[" + USERNAME + "] " + "Submitted {} band pointing".format(flt))
-            requests[flt] = request
+            requests_dict[flt] = request
         except Exception:
             logging.info("[" + USERNAME + "] " + "There was a prolem with the submisison.")
             logging.exception("[" + USERNAME + "] " + "The traceback for the submission is below")
@@ -203,8 +203,8 @@ if not options.test:
     request_file = open(request_filename, 'w+')
     logging.debug("[" + USERNAME + "] " + "request file set to {}".format(request_filename))
     
-    for flt in requests.keys():
-        request_file.write(json.dumps(requests[flt], indent=4))
+    for flt in requests_dict.keys():
+        request_file.write(json.dumps(requests_dict[flt], indent=4))
         request_file.write('\n\n')
         
         logging.info("[" + USERNAME + "] " + "Wrote requests for {} band".format(flt))
