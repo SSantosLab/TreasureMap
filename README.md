@@ -8,9 +8,19 @@ The following commands will get you to the right place and set up your environme
 - `cd /data/des41.a/data/desgw_public/TreasureMap`
 - `source setup_tm.sh`
 
-### Getting a TreasureMap API token (optional, but takes 1 minute)
-You'll need this to tag the pointings to your name.
-If you decide not to do this step, the script will default to M. Gill's API token.
+### Getting listed as a DESGW Author
+When we submit pointings to TreasureMap, a DOI is automatically generated.
+To get your name added to the DOI, it must be listed in the `authors.yaml`.
+If your information is missing from this file, contact Rob Morgan or Mandeep Gill.
+
+**Important:** If you plan on submitting pointings yourself, do `touch api_tokens/<FNAL_services_username>/<Full_Name>.name`. 
+This will make it possible for your name to be listed as the first author on the DOI.
+`<Full_Name>` must match exaclty what you put in the `authors.yaml` file, with the exceptions that all space characters need to be replaced with underscores.
+If you do not have a FNAL services username, you can skip this step.
+
+### Getting a TreasureMap API token (required only if you plan on submitting pointings yourself)
+You'll need this to tag the pointings with your name in the TreasureMap API.
+If you decide not to do this step, the script will default to M. Gill's API token and list M. Gill as the first author on the DOI request.
 
 1. Head to [http://treasuremap.space/](http://treasuremap.space/)
 1. Click "Register" and follow the prompts
@@ -23,14 +33,6 @@ Perform the following commands:
 
 - `mkdir api_tokens/<FNAL_services_username>`
 - `touch api_tokens/<FNAL_services_username>/<API_token>.api_token`
-
-### Getting listed as a DESGW Author
-When we submit pointings to TreasureMap, a DOI is automatically generated.
-To get your name added to the DOI, update the `authors.yaml` file with your full name and affiliation.
-
-**Important:** do `touch api_tokens/<FNAL_services_username>/<Full_Name>.name`. 
-`<Full_Name>` must match exaclty what you put in the `authors.yaml` file, with the exceptions that all space characters need to be replaced with underscores.
-If you do not have a FNAL services username, you can skip this step.
 
 ## Usage
 Now we're ready to run the scripts.
