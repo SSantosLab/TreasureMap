@@ -24,6 +24,14 @@ Perform the following commands:
 - `mkdir api_tokens/<FNAL_services_username>`
 - `touch api_tokens/<FNAL_services_username>/<API_token>.api_token`
 
+### Getting listed as a DESGW Author
+When we submit pointings to TreasureMap, a DOI is automatically generated.
+To get your name added to the DOI, update the `authors.yaml` file with your full name and affiliation.
+
+**Important:** do `touch api_tokens/<FNAL_services_username>/<Full_Name>.name`. 
+`<Full_Name>` must match exaclty what you put in the `authors.yaml` file, with the exceptions that all space characters need to be replaced with underscores.
+If you do not have a FNAL services username, you can skip this step.
+
 ## Usage
 Now we're ready to run the scripts.
 You will need the following information:
