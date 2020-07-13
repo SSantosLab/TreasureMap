@@ -9,6 +9,7 @@ import json
 import logging
 from optparse import OptionParser
 import os
+import requests
 import sys
 sys.path.append('TreasureMapPy/treasuremap')
 
@@ -136,9 +137,6 @@ logging.info("[" + USERNAME + "] " + "Finished making pointings")
 logging.info("[" + USERNAME + "] " + "Starting generation of json data")
 for pointing in pointings.values():
     pointing.build_json()
-    # Add in DOI info
-    pointing["doi_group_id"] = "DECam"
-    pointing["request_doi"] = True
 logging.info("[" + USERNAME + "] " + "Finished building json data")
 
 # If the preview argument was used, wait for approval before submitting
@@ -178,6 +176,14 @@ if not options.test:
             logging.exception("[" + USERNAME + "] " + "The traceback for the submission is below")
             logging.warning("[" + USERNAME + "] " + "The {} band pointings may not have submitted properly".format(flt))
     logging.info("[" + USERNAME + "] " + "Finished submisison")
+    
+    # Request a DOI and save TreasureMap response
+    logging.info("[" + USERNAME + "] " + "Requesting a DOI for submitted pointings")
+    json_data = {"api_token": API_TOKEN, "graceid": options.graceid, "doi_group_id": "DECam"}
+    r = requests.post(url="http://treasuremap.space/api/v0/request_doi", json=json_data)
+    logging.info("[" + USERNAME + "] " + "DOI response saved to doi.json")
+    response_file = open("doi.json", 'w+')
+    response_file.write(json.dumps(r.text, indent=4))
 
     # Save pointings
     logging.info("[" + USERNAME + "] " + "Saving submission pointings")
@@ -206,6 +212,7 @@ if not options.test:
     # Close open file streams
     request_file.close()
     pointing_file.close()
+    response_file.close()
 
 else:
     logging.info("[" + USERNAME + "] " + "Skipping submission process due to --test argument")
