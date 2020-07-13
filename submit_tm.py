@@ -11,11 +11,23 @@ from optparse import OptionParser
 import os
 import requests
 import sys
+import yaml
 sys.path.append('TreasureMapPy/treasuremap')
 
 from astropy.coordinates import SkyCoord
 import pandas as pd
 from treasuremap import Pointings
+
+def get_creators():
+    """
+    Load in a dictionary of authors and affiliations.
+    
+    :return: creators: a dictionary of authors and affiliations
+    """
+    with open("authors.yaml", 'r') as creator_file:
+        creators = yaml.safe_load(creator_file)
+    
+    return creators
 
 # Get username of user
 USERNAME = getpass.getuser()
@@ -179,7 +191,8 @@ if not options.test:
     
     # Request a DOI and save TreasureMap response
     logging.info("[" + USERNAME + "] " + "Requesting a DOI for submitted pointings")
-    json_data = {"api_token": API_TOKEN, "graceid": options.graceid, "doi_group_id": "DECam"}
+    creators = get_creators()
+    json_data = {"api_token": API_TOKEN, "graceid": options.graceid, "creators": creators}
     r = requests.post(url="http://treasuremap.space/api/v0/request_doi", json=json_data)
     logging.info("[" + USERNAME + "] " + "DOI response saved to doi.json")
     response_file = open("doi.json", 'w+')
