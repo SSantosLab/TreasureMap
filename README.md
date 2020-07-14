@@ -1,6 +1,21 @@
 # TreasureMap
 Scripts to send DECam pointings to TreasureMap.
 
+## Quick Start
+You'll need the start and end date of the observations, the Prop-ID, and the name of the event in GraceDB.
+For S190814bv, the script would be used like this:
+
+```python
+$ cd /data/des41.a/data/desgw_public/TreasureMap
+$ source setup_tm.sh
+$ python query_tm.py --outfile pointings.csv --start 20190813 --end 20190905 --propid 2019B-0372
+$ python submit_tm.py --infile pointings.csv --graceid S190814bv --preview
+```
+
+That's it! 
+Below I go into details about how to setup the directory structure if you want to be listed as an author.
+In a real-time follow-up, though, the above four commands are all you need.
+
 ### Environment set up
 This repository exists on the Fermilab DES cluster. Start by ssh-ing to the DES machines. 
 The following commands will get you to the right place and set up your environment:
