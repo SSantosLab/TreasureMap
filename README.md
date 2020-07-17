@@ -19,7 +19,7 @@ In a real-time follow-up, though, the above four commands are all you need.
 ## Detailed Instructions
 
 ### Environment set up
-This repository exists on the Fermilab DES cluster. Start by ssh-ing to the DES machines. 
+This repository exists on the Fermilab DES cluster. Start by ssh-ing to the DES machines. Make sure you are in bash shell.
 The following commands will get you to the right place and set up your environment:
 
 - `cd /data/des41.a/data/desgw_public/TreasureMap`
@@ -32,7 +32,7 @@ If your information is missing from this file, contact Rob Morgan or Mandeep Gil
 
 **Important:** If you plan on submitting pointings yourself, do `touch api_tokens/<FNAL_services_username>/<Full_Name>.name`. 
 This will make it possible for your name to be listed as the first author on the DOI.
-`<Full_Name>` must match exaclty what you put in the `authors.yaml` file, with the exceptions that all space characters need to be replaced with underscores.
+`<Full_Name>` must match exactly what you put in the `authors.yaml` file, with the exceptions that all space characters need to be replaced with underscores.
 If you do not have a FNAL services username, you can skip this step.
 
 ### Getting a TreasureMap API token (required only if you plan on submitting pointings yourself)
