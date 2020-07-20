@@ -53,7 +53,7 @@ from (select id as expnum,
              to_char(date::timestamp - interval '1 DAY' ,'YYYYMMDD') as night, 
              to_char(date::timestamp,'HH24:MI:SS') as time,
              qc_teff,
-             to_char(ra,'09.999999') as ra, 
+             ra, 
              to_char(declination,'99.99999') as dec,
              substring(object from 'x(.......)t') as hex 
       from exposure.exposure 
