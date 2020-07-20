@@ -19,7 +19,7 @@ In a real-time follow-up, though, the above four commands are all you need.
 ## Detailed Instructions
 
 ### Environment set up
-This repository exists on the Fermilab DES cluster. Start by ssh-ing to the DES machines. Make sure you are in bash shell.
+This repository exists on the Fermilab DES cluster. Start by ssh-ing to the DES machines. 
 The following commands will get you to the right place and set up your environment:
 
 - `cd /data/des41.a/data/desgw_public/TreasureMap`
