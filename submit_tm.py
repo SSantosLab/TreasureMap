@@ -36,7 +36,7 @@ def get_creators():
     name_idx = authors.index({"name": name, "affiliation": creators["AUTHORS"][name]})
     value = authors.pop(name_idx)
     
-    return [value] + c
+    return [value] + authors
     
     
 
