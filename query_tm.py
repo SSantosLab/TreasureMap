@@ -8,6 +8,7 @@ import glob
 from optparse import OptionParser
 import sys
 
+import numpy as np
 import pandas as pd
 import psycopg2
 
@@ -86,7 +87,8 @@ conn.close()
 
 # Format output DataFrame
 df['instrumentid'] = 38 # DECam
-df['date'] = pd.to_datetime(df['night'].values, format='%Y%m%d')
+# add one to date because query rounded down
+df['date'] = pd.to_datetime(np.array([str(x) for x in np.array(df['night'].values, dtype=int) + 1]), format='%Y%m%d')
 df['time'] = pd.to_datetime(df['time'].values, format='%H:%M:%S')
 df['time'] = df['date'].apply(lambda x: x.strftime('%Y-%m-%d')) + 'T' + df['time'].apply(lambda x: x.strftime('%H:%M:%S') + '.0')
 df['band'] = df['filter'].values
